@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id              String    @id @default(cuid())
+  createdAt       DateTime  @default(now())
+  fullName        String
+  company         String?
+  email           String
+  phone           String?
+  subject         String
+  message         String
+  type            LeadType  @default(CONTACT)
+  status          LeadStatus @default(NEW)
+  attachmentName  String?
+  attachmentType  String?
+  attachmentSize  Int?
+  attachmentData  Bytes?
+}
+
+enum LeadType {
+  CONTACT
+  EXPRESS
+}
+
+enum LeadStatus {
+  NEW
+  LU
+  ARCHIVE
+}
+
+
+
+

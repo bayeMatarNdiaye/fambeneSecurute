@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-onyx text-white font-body antialiased;
+}
+
+.glass-panel {
+  @apply bg-white/10 backdrop-blur-xl border border-white/10 shadow-glass rounded-3xl;
+}
+
+.section-padding {
+  @apply py-16 lg:py-24;
+}
+
+.red-underline {
+  position: relative;
+}
+
+.red-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #d62121, transparent);
+  animation: slide 4s ease-in-out infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
