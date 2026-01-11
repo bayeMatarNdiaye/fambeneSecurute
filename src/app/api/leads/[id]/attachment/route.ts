@@ -4,8 +4,10 @@ import { authorizeRequest } from "@/lib/auth";
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } },
+  props: { params: Promise<{ id: string }> },
 ) {
+  const params = await props.params;
+
   if (!authorizeRequest(request)) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
