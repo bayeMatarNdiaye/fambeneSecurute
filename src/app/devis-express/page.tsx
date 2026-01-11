@@ -9,7 +9,7 @@ export const metadata = {
 export default function DevisExpressPage() {
   return (
     <div className="space-y-12 bg-night pb-24 pt-10">
-      <section className="mx-auto max-w-5xl px-6 text-white">
+      <section className="mx-auto max-w-5xl px-6 text-foreground">
         <Reveal>
           <p className="text-sm uppercase tracking-[0.3em] text-primary">
             Devis express
@@ -28,7 +28,7 @@ export default function DevisExpressPage() {
             <p className="text-sm uppercase tracking-[0.3em] text-primary">
               Ce que vous recevez
             </p>
-            <ul className="mt-4 space-y-3 text-white/70">
+            <ul className="mt-4 space-y-3 text-muted-foreground">
               <li>• Dimensionnement agents & équipements</li>
               <li>• Planning de déploiement</li>
               <li>• Budget HT détaillé</li>
@@ -36,9 +36,9 @@ export default function DevisExpressPage() {
             </ul>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {services.slice(0, 4).map((service) => (
-                <div key={service.title} className="rounded-2xl border border-white/10 p-4">
+                <div key={service.title} className="rounded-2xl border border-border p-4">
                   <service.icon className="h-6 w-6 text-primary" />
-                  <p className="text-white">{service.title}</p>
+                  <p className="text-foreground">{service.title}</p>
                 </div>
               ))}
             </div>
@@ -51,6 +51,8 @@ export default function DevisExpressPage() {
     </div>
   );
 }
+
+
 
 
 

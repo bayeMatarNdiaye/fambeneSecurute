@@ -22,9 +22,9 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-night/80 backdrop-blur-xl">
+    <header className="fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-heading font-semibold text-white">
+        <Link href="/" className="text-lg font-heading font-semibold text-foreground">
           FAMBENE SÉCURITÉ<span className="text-primary">.</span>
         </Link>
 
@@ -34,8 +34,8 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "relative text-white/70 transition hover:text-white",
-                pathname === link.href && "text-white",
+                "relative text-muted-foreground transition hover:text-foreground",
+                pathname === link.href && "text-foreground",
               )}
             >
               {link.label}
@@ -58,7 +58,7 @@ export function Navbar() {
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Ouvrir la navigation"
         >
-          {open ? <X className="text-white" /> : <Menu className="text-white" />}
+          {open ? <X className="text-foreground" /> : <Menu className="text-foreground" />}
         </button>
       </div>
 

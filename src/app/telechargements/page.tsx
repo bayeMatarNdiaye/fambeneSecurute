@@ -10,7 +10,7 @@ export const metadata = {
 export default function DownloadsPage() {
   return (
     <div className="space-y-12 bg-night pb-24 pt-10">
-      <section className="mx-auto max-w-5xl px-6 text-white">
+      <section className="mx-auto max-w-5xl px-6 text-foreground">
         <Reveal>
           <p className="text-sm uppercase tracking-[0.3em] text-primary">
             Documents officiels
@@ -29,13 +29,13 @@ export default function DownloadsPage() {
             <Reveal delay={index * 0.05} key={doc.title}>
               <div className="glass-panel flex items-center justify-between p-6">
                 <div>
-                  <p className="text-xl font-heading text-white">{doc.title}</p>
-                  <p className="text-white/70">{doc.description}</p>
+                  <p className="text-xl font-heading text-foreground">{doc.title}</p>
+                  <p className="text-muted-foreground">{doc.description}</p>
                 </div>
                 <Link
                   href={doc.file}
                   target="_blank"
-                  className="rounded-full border border-white/20 p-3 text-white transition hover:border-primary hover:text-primary"
+                  className="rounded-full border border-border p-3 text-foreground transition hover:border-primary hover:text-primary"
                 >
                   <Download />
                 </Link>
@@ -47,6 +47,8 @@ export default function DownloadsPage() {
     </div>
   );
 }
+
+
 
 
 

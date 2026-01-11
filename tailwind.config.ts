@@ -10,11 +10,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#D62121",
-        "primary-dark": "#407618",
-        night: "#050505",
+        primary: "#407618",
+        "primary-dark": "#2d5211",
+        accent: "#D62121",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        "muted-foreground": "var(--muted-foreground)",
+        night: "var(--night)",
         charcoal: "#0F0F12",
-        onyx: "#1A1A1F",
+        onyx: "var(--onyx)",
+        panel: "var(--panel)",
+        border: "var(--border)",
         gold: "#C39A58",
         platinum: "#E1E1E1",
       },
@@ -23,7 +29,7 @@ const config: Config = {
         body: ["var(--font-body)", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 45px rgba(214, 33, 33, 0.35)",
+        glow: "0 0 45px rgba(64, 118, 24, 0.35)",
         glass: "0 25px 120px rgba(0, 0, 0, 0.35)",
       },
       backgroundImage: {
@@ -39,6 +45,8 @@ const config: Config = {
 };
 
 export default config;
+
+
 
 
 

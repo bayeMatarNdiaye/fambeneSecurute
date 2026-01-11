@@ -19,7 +19,7 @@ export function ThemeToggle() {
   return (
     <button
       aria-label="Basculer le thème"
-      className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:-translate-y-0.5"
+      className="glass-panel flex h-11 w-11 items-center justify-center rounded-full border border-border bg-panel text-foreground transition hover:-translate-y-0.5"
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
       {isDark ? <SunMedium size={18} /> : <Moon size={18} />}

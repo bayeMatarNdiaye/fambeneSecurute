@@ -3,37 +3,51 @@
 @tailwind utilities;
 
 :root {
+  --background: #fdfdfd;
+  --foreground: #0f0f12;
+  --night: #ffffff;
+  --onyx: #f4f4f5;
+  --panel: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+  --muted-foreground: #71717a;
   color-scheme: light;
 }
 
 :root.dark {
+  --background: #050505;
+  --foreground: #ffffff;
+  --night: #050505;
+  --onyx: #1a1a1f;
+  --panel: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #a1a1aa;
   color-scheme: dark;
 }
 
 body {
-  @apply bg-onyx text-white font-body antialiased;
+  @apply bg-background text-foreground font-body antialiased;
 }
 
 .glass-panel {
-  @apply bg-white/10 backdrop-blur-xl border border-white/10 shadow-glass rounded-3xl;
+  @apply bg-panel backdrop-blur-xl border border-border shadow-glass rounded-3xl;
 }
 
 .section-padding {
   @apply py-16 lg:py-24;
 }
 
-.red-underline {
+.accent-underline {
   position: relative;
 }
 
-.red-underline::after {
+.accent-underline::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -0.5rem;
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #d62121, transparent);
+  background: linear-gradient(90deg, theme('colors.accent'), transparent);
   animation: slide 4s ease-in-out infinite;
 }
 
@@ -41,9 +55,11 @@ body {
   0% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(30px);
   }
+
   100% {
     transform: translateX(0);
   }

@@ -8,7 +8,7 @@ export const metadata = {
 export default function GaleriePage() {
   return (
     <div className="space-y-12 bg-night pb-24 pt-10">
-      <section className="mx-auto max-w-5xl px-6 text-white">
+      <section className="mx-auto max-w-5xl px-6 text-foreground">
         <Reveal>
           <p className="text-sm uppercase tracking-[0.3em] text-primary">
             Réalisations
@@ -33,7 +33,7 @@ export default function GaleriePage() {
             <div className="aspect-video">
               <iframe
                 className="h-full w-full"
-                src="https://www.youtube.com/embed/iYJgFM0_V0Y"
+                src="https://www.youtube.com/embed/LYC4S7EAOXk"
                 title="Video surveillance FAMBENE"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 loading="lazy"

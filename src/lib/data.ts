@@ -73,37 +73,37 @@ export const galleryItems = [
     title: "Brigade mobile",
     category: "Intervention",
     image:
-      "https://images.unsplash.com/photo-1764032757346-180f5b986f7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cyVDMyVBOWN1cml0JUMzJUE5JTIwY29udHJvbHxlbnwwfHwwfHx8MA%3D%3D",
+      "/images/gallery/brigade-mobile.png",
   },
   {
     title: "Poste de contrôle",
     category: "Monitoring",
     image:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+      "/images/gallery/poste-controle.jpg",
   },
   {
     title: "Protection événementielle",
     category: "Événementiel",
     image:
-      "https://images.unsplash.com/photo-1760228604788-db8a36d5c1a3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cyVDMyVBOWN1cml0JUMzJUE5JTIwZXZlbmVtZW50fGVufDB8fDB8fHww",
+      "/images/gallery/protection-evenementielle.jpg",
   },
   {
     title: "Maintenance technique",
     category: "Support",
     image:
-      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFpbnRlbmFuY2V8ZW58MHx8MHx8fDA%3D",
+      "/images/gallery/maintenance-technique.png",
   },
   {
     title: "Centre de télésurveillance",
     category: "SOC",
     image:
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1200&q=80",
+      "/images/gallery/centre-telesurveillance.png",
   },
   {
     title: "Agents cynophiles",
     category: "Gardiennage",
     image:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80",
+      "/images/gallery/agents-cynophiles.jpg",
   },
 ];
 

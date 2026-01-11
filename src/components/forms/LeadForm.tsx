@@ -81,9 +81,9 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="text-sm text-white/70">Prénom & Nom *</label>
+          <label className="text-sm text-muted-foreground">Prénom & Nom *</label>
           <input
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
             placeholder="Ex : Aminata Ndiaye"
             {...register("fullName")}
           />
@@ -92,9 +92,9 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
           )}
         </div>
         <div>
-          <label className="text-sm text-white/70">Entreprise</label>
+          <label className="text-sm text-muted-foreground">Entreprise</label>
           <input
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
             placeholder="Nom de l'organisation"
             {...register("company")}
           />
@@ -103,10 +103,10 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="text-sm text-white/70">Email *</label>
+          <label className="text-sm text-muted-foreground">Email *</label>
           <input
             type="email"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
             placeholder="contact@entreprise.com"
             {...register("email")}
           />
@@ -115,10 +115,10 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
           )}
         </div>
         <div>
-          <label className="text-sm text-white/70">Téléphone *</label>
+          <label className="text-sm text-muted-foreground">Téléphone *</label>
           <input
             inputMode="tel"
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
             placeholder="+221 77 123 45 67"
             {...register("phone")}
           />
@@ -129,10 +129,10 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
       </div>
 
       <div>
-        <label className="text-sm text-white/70">Objet *</label>
+        <label className="text-sm text-muted-foreground">Objet *</label>
         {variant === "EXPRESS" ? (
           <select
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none"
             {...register("subject")}
           >
             {services.slice(0, 5).map((service) => (
@@ -143,7 +143,7 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
           </select>
         ) : (
           <select
-            className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+            className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none"
             {...register("subject")}
           >
             {subjectOptions.map((option) => (
@@ -159,10 +159,10 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
       </div>
 
       <div>
-        <label className="text-sm text-white/70">Message *</label>
+        <label className="text-sm text-muted-foreground">Message *</label>
         <textarea
           rows={compact ? 4 : 6}
-          className="mt-2 w-full rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm focus:border-primary focus:outline-none"
+          className="mt-2 w-full rounded-2xl border border-border bg-onyx px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
           placeholder="Décrivez votre besoin..."
           {...register("message")}
         />
@@ -172,14 +172,14 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-white/70">
+        <label className="text-sm text-muted-foreground">
           Pièce jointe (brief, cahier des charges)
         </label>
         <Controller
           control={control}
           name="attachment"
           render={({ field }) => (
-            <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-dashed border-white/15 bg-black/20 px-4 py-3 text-sm text-white/70">
+            <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-dashed border-border bg-onyx px-4 py-3 text-sm text-muted-foreground">
               <input
                 type="file"
                 className="hidden"
@@ -191,7 +191,7 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
                 }}
               />
               <span>{fileName ?? "Glisser-déposer ou parcourir"}</span>
-              <span className="text-xs text-white/40">PDF • DOC • 5 Mo max</span>
+              <span className="text-xs text-muted-foreground/60">PDF • DOC • 5 Mo max</span>
             </label>
           )}
         />
@@ -203,7 +203,7 @@ export function LeadForm({ variant = "CONTACT", compact = false }: Props) {
       </div>
 
       <div className="flex items-center justify-between gap-4">
-        <p className="text-xs text-white/40">
+        <p className="text-xs text-muted-foreground/60">
           Vos données sont stockées de façon sécurisée (DB chiffrée + email).
         </p>
         <Button disabled={isSubmitting} type="submit">

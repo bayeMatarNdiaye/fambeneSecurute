@@ -26,9 +26,6 @@ export const metadata: Metadata = {
   },
   description:
     "Gardiennage humain, télésurveillance 24/7 et solutions de sécurité intégrées pour sites sensibles et événements.",
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export default function RootLayout({
