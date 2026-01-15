@@ -12,21 +12,29 @@ export async function GET(
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const lead = await prisma.lead.findUnique({
-    where: { id: params.id },
-  });
+  try {
+    const lead = await prisma.lead.findUnique({
+      where: { id: params.id },
+    });
 
-  if (!lead?.attachmentData) {
-    return NextResponse.json({ error: "Aucune pièce jointe" }, { status: 404 });
+    if (!lead?.attachmentData) {
+      return NextResponse.json({ error: "Aucune pièce jointe" }, { status: 404 });
+    }
+
+    return new NextResponse(Buffer.from(lead.attachmentData), {
+      status: 200,
+      headers: {
+        "Content-Type": lead.attachmentType ?? "application/octet-stream",
+        "Content-Disposition": `attachment; filename="${lead.attachmentName ?? "piece-jointe"}"`,
+      },
+    });
+  } catch (error) {
+    console.error("❌ Database error on GET /api/leads/[id]/attachment:", error);
+    return NextResponse.json(
+      { error: "Erreur de téléchargement" },
+      { status: 500 },
+    );
   }
-
-  return new NextResponse(Buffer.from(lead.attachmentData), {
-    status: 200,
-    headers: {
-      "Content-Type": lead.attachmentType ?? "application/octet-stream",
-      "Content-Disposition": `attachment; filename="${lead.attachmentName ?? "piece-jointe"}"`,
-    },
-  });
 }
 
 

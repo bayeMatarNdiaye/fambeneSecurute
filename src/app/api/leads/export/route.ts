@@ -7,44 +7,52 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const leads = await prisma.lead.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  try {
+    const leads = await prisma.lead.findMany({
+      orderBy: { createdAt: "desc" },
+    });
 
-  const rows = [
-    [
-      "Date",
-      "Nom complet",
-      "Entreprise",
-      "Email",
-      "Téléphone",
-      "Objet",
-      "Message",
-      "Type",
-      "Statut",
-    ],
-    ...leads.map((lead) => [
-      lead.createdAt.toISOString(),
-      `"${lead.fullName}"`,
-      `"${lead.company ?? ""}"`,
-      lead.email,
-      lead.phone ?? "",
-      `"${lead.subject}"`,
-      `"${lead.message.replace(/"/g, '""')}"`,
-      lead.type,
-      lead.status,
-    ]),
-  ];
+    const rows = [
+      [
+        "Date",
+        "Nom complet",
+        "Entreprise",
+        "Email",
+        "Téléphone",
+        "Objet",
+        "Message",
+        "Type",
+        "Statut",
+      ],
+      ...leads.map((lead) => [
+        lead.createdAt.toISOString(),
+        `"${lead.fullName}"`,
+        `"${lead.company ?? ""}"`,
+        lead.email,
+        lead.phone ?? "",
+        `"${lead.subject}"`,
+        `"${lead.message.replace(/"/g, '""')}"`,
+        lead.type,
+        lead.status,
+      ]),
+    ];
 
-  const csv = rows.map((row) => row.join(";")).join("\n");
+    const csv = rows.map((row) => row.join(";")).join("\n");
 
-  return new NextResponse(csv, {
-    status: 200,
-    headers: {
-      "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename=leads-${Date.now()}.csv`,
-    },
-  });
+    return new NextResponse(csv, {
+      status: 200,
+      headers: {
+        "Content-Type": "text/csv; charset=utf-8",
+        "Content-Disposition": `attachment; filename=leads-${Date.now()}.csv`,
+      },
+    });
+  } catch (error) {
+    console.error("❌ Database error on GET /api/leads/export:", error);
+    return NextResponse.json(
+      { error: "Erreur d'export" },
+      { status: 500 },
+    );
+  }
 }
 
 

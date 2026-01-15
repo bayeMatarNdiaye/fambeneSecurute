@@ -20,6 +20,18 @@ export async function sendLeadEmail(lead: Lead) {
     !NOTIFY_EMAIL_FROM ||
     !NOTIFY_EMAIL_TO
   ) {
+    console.log("⚠️ SMTP non configuré. Simulation d'envoi d'email en local :");
+    console.log(`[SUJET] [Lead ${lead.type}] ${lead.subject}`);
+    console.log(`[CONTENU]`);
+    console.log(`Nom: ${lead.fullName}`);
+    console.log(`Email: ${lead.email}`);
+    console.log(`Message: ${lead.message}`);
+    if (lead.attachmentData) {
+      console.log(`[PIÈCE JOINTE] ${lead.attachmentName} (${lead.attachmentSize} bytes)`);
+    } else {
+      console.log(`[AUCUNE PIÈCE JOINTE]`);
+    }
+    console.log("---------------------------------------------------");
     return;
   }
 

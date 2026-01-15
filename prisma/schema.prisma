@@ -16,23 +16,12 @@ model Lead {
   phone           String?
   subject         String
   message         String
-  type            LeadType  @default(CONTACT)
-  status          LeadStatus @default(NEW)
+  type            String    @default("CONTACT") // Was Enum LeadType
+  status          String    @default("NEW")     // Was Enum LeadStatus
   attachmentName  String?
   attachmentType  String?
   attachmentSize  Int?
   attachmentData  Bytes?
-}
-
-enum LeadType {
-  CONTACT
-  EXPRESS
-}
-
-enum LeadStatus {
-  NEW
-  LU
-  ARCHIVE
 }
 
 

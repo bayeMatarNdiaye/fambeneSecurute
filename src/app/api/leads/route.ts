@@ -9,17 +9,25 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const leads = await prisma.lead.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  try {
+    const leads = await prisma.lead.findMany({
+      orderBy: { createdAt: "desc" },
+    });
 
-  return NextResponse.json({
-    leads: leads.map((lead) => ({
-      ...lead,
-      attachmentData: undefined,
-      hasAttachment: Boolean(lead.attachmentData),
-    })),
-  });
+    return NextResponse.json({
+      leads: leads.map((lead) => ({
+        ...lead,
+        attachmentData: undefined,
+        hasAttachment: Boolean(lead.attachmentData),
+      })),
+    });
+  } catch (error) {
+    console.error("❌ Database error on GET /api/leads:", error);
+    return NextResponse.json(
+      { error: "Erreur de base de données" },
+      { status: 500 },
+    );
+  }
 }
 
 export async function POST(request: Request) {
@@ -40,6 +48,7 @@ export async function POST(request: Request) {
   const parsed = leadSchema.safeParse(payload);
 
   if (!parsed.success) {
+    console.error("❌ Validation failed:", parsed.error.flatten().fieldErrors);
     return NextResponse.json(
       { error: parsed.error.flatten().fieldErrors },
       { status: 400 },
@@ -54,19 +63,30 @@ export async function POST(request: Request) {
     fileBuffer = Buffer.from(arrayBuffer);
   }
 
-  const lead = await prisma.lead.create({
-    data: {
-      ...rest,
-      type: rest.type,
-      attachmentName: attachment?.name,
-      attachmentType: attachment?.type,
-      attachmentSize: attachment?.size,
-      attachmentData: fileBuffer,
-    },
-  });
+  try {
+    const lead = await prisma.lead.create({
+      data: {
+        ...rest,
+        type: rest.type,
+        attachmentName: attachment?.name,
+        attachmentType: attachment?.type,
+        attachmentSize: attachment?.size,
+        attachmentData: fileBuffer,
+      },
+    });
 
-  sendLeadEmail(lead).catch(() => undefined);
+    console.log("✅ Lead created successfully:", lead.id);
+    sendLeadEmail(lead).catch((err) => {
+      console.error("⚠️ Email sending failed:", err);
+    });
 
-  return NextResponse.json({ success: true, leadId: lead.id });
+    return NextResponse.json({ success: true, leadId: lead.id });
+  } catch (error) {
+    console.error("❌ Database error on POST /api/leads:", error);
+    return NextResponse.json(
+      { error: "Erreur lors de l'enregistrement" },
+      { status: 500 },
+    );
+  }
 }
 
